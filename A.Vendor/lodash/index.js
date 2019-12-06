@@ -3,14 +3,18 @@ let _ = require('../node_modules/lodash/index.js');
 
 const ori = [{a:1, b:1}, {a:2, b:2}, {a:2, b:3}];
 
-let maps = _.filter(ori, function(item){
-    if (item.a !== 2) {
-        let pic = _.pick(item, ['a']);
-        return pic;
+const dans = [
+    {value: 40, label: "青铜3", level: 2},
+    {value: 41, label: "青铜2", level: 3},
+    {value: 35, label: "青铜1", level: 4},
+];
+let maps = _.find(dans, function(item){
+    if (item.value === 40) {
+       return true;
     }
 });
 
-// console.log(maps);
+console.log(maps);
 
 let takew = _.takeWhile(ori, function(item){
     if (item.a !== 2) {
