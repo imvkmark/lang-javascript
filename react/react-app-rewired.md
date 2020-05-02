@@ -25,8 +25,6 @@
 
 "Stuff can break" — Dan Abramov https://twitter.com/dan_abramov/status/1045809734069170176
 
-<hr>
-
 **注意:** 我个人使用[next.js](https://github.com/zeit/next.js/) 或者 [Razzle](https://github.com/jaredpalmer/razzle) 都支持开箱即用的自定义 Webpack。
 
 ## 备选方案
