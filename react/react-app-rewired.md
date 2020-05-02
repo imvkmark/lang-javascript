@@ -15,6 +15,7 @@
 此工具可以在不 'eject' 也不创建额外 react-scripts 的情况下修改 create-react-app 内置的 webpack 配置，然后你将拥有 create-react-app 的一切特性，且可以根据你的需要去配置 webpack 的 plugins, loaders 等。
 
 # Rewire你的应用 ☠
+
 从 Create React App 2.0开始，这个仓库主要由社区“轻度”维护。
 
 ⚠️ **注意**
