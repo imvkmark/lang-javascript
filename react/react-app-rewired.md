@@ -38,20 +38,20 @@
 
 > 使用 [create-react-app](https://github.com/facebookincubator/create-react-app) 创建您的应用，然后 rewire
 
-#### 1) 安装 react-app-rewired
+### 1) 安装 react-app-rewired
 
-##### 对于使用 Webpack 4 的 create-react-app 2.x
+**对于使用 Webpack 4 的 create-react-app 2.x**
 
 ```bash
 $ npm install react-app-rewired --save-dev
 ```
 
-##### 对于 create-react-app 1.x 或 react-scripts-ts 与 Webpack 3：
+**对于 create-react-app 1.x 或 react-scripts-ts 与 Webpack 3：**
 ```bash
 $ npm install react-app-rewired@1.6.2 --save-dev
 ```
 
-#### 2) 在根目录中创建一个 config-overrides.js 文件
+### 2) 在根目录中创建一个 config-overrides.js 文件
 
 ```javascript
 /* config-overrides.js */
@@ -71,7 +71,7 @@ module.exports = function override(config, env) {
 |   +-- src
 ```
 
- #### 3) 替换 package.json 中 scripts 执行部分
+### 3) 替换 package.json 中 scripts 执行部分
 
 ```diff
   /* package.json */
@@ -88,13 +88,13 @@ module.exports = function override(config, env) {
 ```
  注意：不用替换 `eject` 部分。工具中没有针对 `eject` 的配置替换，执行了 eject 命令会让工具失去作用（能找到这个插件我也相信你知道 eject 是干嘛的）。
 
-#### 4) 启动 Dev Server
+### 4) 启动 Dev Server
 
 ```bash
 $ npm start
 ```
 
-#### 5) 构建你的应用程序
+### 5) 构建你的应用程序
 
 ```bash
 $ npm run build
@@ -171,11 +171,11 @@ module.exports = {
 }
 ```
 
-#### 1) Webpack 配置 - 开发和生产
+### 1) Webpack 配置 - 开发和生产
 
 该 `webpack` 字段用于提供与 config-overrides.js 导出的单个函数的等效项。这是使用所有常用 rewire 的地方。它无法在测试模式下配置编译，因为测试模式根本无法通过 Webpack 运行（它在 Jest 中运行）。它也不能用于自定义用于在开发模式下提供页面的 Webpack Dev Server，因为 create-react-app 生成一个单独的 Webpack 配置，以便与使用不同函数和默认配置的 dev 服务器一起使用。
 
-#### 2) Jest 配置 - 测试
+### 2) Jest 配置 - 测试
 
 Webpack 不用于在测试模式下编译应用程序 - 而是使用 Jest。这意味着您的 webpack 配置自定义函数中指定的任何重连接*都不会在*测试模式下应用于您的项目。
 
@@ -185,7 +185,7 @@ React-app-rewired 自动允许您在文件的某个 `jest` 部分自定义 Jest 
 
 `jest` 在 module.exports 对象中的字段 `config-overrides.js` 用于指定可以调用的函数，以便以 package.json 文件的 jest 部分中不能的方式自定义 Jest 测试配置。例如，它允许您根据环境变量更改某些配置选项。此函数作为参数传递默认的 create-react-app Jest 配置，并且需要返回要使用的已修改的Jest配置。很多时候你只需要使用 package.json 文件的 jest 部分和 `.babelrc` 文件（或 `package.json` 中的 babel 部分）的组合就可以进行配置更改，而不需要提供这个 jest 函数 `config-overrides.js`
 
-#### 3) Webpack Dev Server
+### 3) Webpack Dev Server
 
 在开发模式下运行时，create-react-app 不会为 Development Server（提供应用程序页面的服务器）使用常用 Webpack 配置。这意味着您无法使用服务器的常规 `webpack` 在`config-overrides.js` 中的部分来更改 Development Server 设置，因为这些更改将不会应用。
 
@@ -193,11 +193,11 @@ React-app-rewired 自动允许您在文件的某个 `jest` 部分自定义 Jest 
 
 React-app-rewired 提供了通过使用在 `config-overrides.js` 文件里 module.exports 出的对象 `devServer` 来覆盖此函数。它为 devServer 函数提供了一个包含默认 create-react-app 函数的参数，该函数通常用于生成 dev server 配置（它不能提供生成的配置版本，因为 react-scripts 直接调用生成函数）。React-app-rewired 需要接收 create-react-app 的*替换函数*作为返回值，然后用于生成 Development Server 配置（即返回值应该是一个新函数，它接受 proxy 和 allowedHost 的两个参数和本身作为参数，并返回 Webpack Development Server 配置）。原始的 react-scripts 函数被传递给`config-overrides.js` 中 devServer 函数，以便您可以自己轻松调用此方法，根据 create-react-app 使用的默认值生成初始 devServer 配置。
 
-#### 4) 路径配置 - 开发&生产
+### 4) 路径配置 - 开发&生产
 
 该 `paths` 字段用于为 `create-react-app` 传递到 webpack 和 jest 的路径提供覆盖。
 
-#### 5) 为第三方工具提供 rewired 的 webpack 配置
+### 5) 为第三方工具提供 rewired 的 webpack 配置
 
 一些第三方工具，比如 [react-cosmos](https://github.com/react-cosmos/react-cosmos) 依赖于你的 webpack 配置。您可以创建 `webpack.config.js` 文件，通过下列代码导出 rewired 配置：
 
@@ -213,7 +213,7 @@ module.exports = overrides.webpack(config, process.env.NODE_ENV);
 然后在工具配置中指向此文件。
 
 ## 其他问题和选择
-#### 1) 入口: 'src/index.js'
+### 1) 入口: 'src/index.js'
 
 此时，由于 create-react-app 包含该文件的方式，很难从默认文件 `src/index.js` 更改入口点。几个 create-react-app 脚本绕过了正常的 rewiring 过程。
 
@@ -226,7 +226,7 @@ require('./index.tsx');
 2. 使用自定义版本的 react-scripts 包来更改脚本本身内部的入口点 (例如. [react-scripts-ts](https://github.com/wmonk/create-react-app-typescript) 对于typescript项目 - 请参阅下面有关如何使用 react-app-rewired 的自定义脚本版本).
 3. 重写 `react-dev-utils/checkRequiredFiles` 函数以始终返回 true（导致 create-react-app 不再尝试强制条目文件必须存在）
 
-#### 2) 自定义脚本版本
+### 2) 自定义脚本版本
 `react-scripts` 通过在命令行选项中指定脚本包的名称 `--scripts-version` 或 `REACT_SCRIPTS_VERSION=<...>` 通过环境进行设置，可以使用自定义版本的包和react-app-rewired。
 
 
@@ -243,7 +243,7 @@ require('./index.tsx');
 }
 ```
 
-##### React-app-rewired 2.x 需要一个自定义的 react-scripts 包来提供以下文件：
+#### React-app-rewired 2.x 需要一个自定义的 react-scripts 包来提供以下文件：
 * config/env.js
 * **config/webpack.config.js**
 * config/webpackDevServer.config.js
@@ -252,7 +252,7 @@ require('./index.tsx');
 * scripts/test.js
 * scripts/utils/createJestConfig.js
 
-##### React-app-rewired 1.x 需要一个自定义的 react-scripts 包来提供以下文件：
+#### React-app-rewired 1.x 需要一个自定义的 react-scripts 包来提供以下文件：
 * config/env.js
 * **config/webpack.config.dev.js**
 * **config/webpack.config.prod.js**
@@ -262,13 +262,13 @@ require('./index.tsx');
 * scripts/test.js
 * scripts/utils/createJestConfig.js
 
-#### 3) 将 config-overrides 指定为目录
+### 3) 将 config-overrides 指定为目录
 
 React-app-rewired 会导入您的 config-overrides.js 文件而不使用 “.js” 扩展名。这意味着您可以选择创建一个名为 `config-overrides` 的目录在你的根目录中，并从该 `index.js` 目录中的默认文件中导出覆盖。
 
 如果使用目录有多个自定义覆盖，则允许您将每个覆盖放在单独的文件中。演示这一点的示例模板可以在 Github 的 [Guria / rewired-ts-boilerplate](https://github.com/Guria/rewired-ts-boilerplate/tree/master/config-overrides) 中找到。
 
-#### 4) 从命令行指定config-overrides位置
+### 4) 从命令行指定config-overrides位置
 
 如果需要更改 config-overrides.js 的位置，可以将命令行选项 --config-overrides<path> 给 react-app-rewired 脚本。
 
