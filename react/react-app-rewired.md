@@ -2,20 +2,15 @@
 
 最新原文地址 : [React-App-Rewired README](https://github.com/timarney/react-app-rewired/blob/master/README_zh.md)
 
-> ℹ️
-
-请在提 issue 之前确保 **issue 是关于项目代码**，而不是 **我要怎么配置 Webpack**。（配置相关的问题可以在 Stack Overflow 或者 Spectrum 上提问）。
+> ℹ️ 请在提 issue 之前确保 **issue 是关于项目代码**，而不是 **我要怎么配置 Webpack**。（配置相关的问题可以在 Stack Overflow 或者 Spectrum 上提问）。
 
 - 🚨 2.0版本移除了rewire helper 功能
-
-[![npm version](https://img.shields.io/npm/v/react-app-rewired.svg)](https://www.npmjs.com/package/react-app-rewired)
-[![npm monthly downloads](https://img.shields.io/npm/dm/react-app-rewired.svg)](https://www.npmjs.com/package/react-app-rewired)
 
  <img alt="react-app-rewired" src="https://github.com/timarney/react-app-rewired/raw/master/assets/react-app-rewired.png" />
 
 此工具可以在不 'eject' 也不创建额外 react-scripts 的情况下修改 create-react-app 内置的 webpack 配置，然后你将拥有 create-react-app 的一切特性，且可以根据你的需要去配置 webpack 的 plugins, loaders 等。
 
-# Rewire你的应用 ☠
+## Rewire你的应用 ☠
 
 从 Create React App 2.0开始，这个仓库主要由社区“轻度”维护。
 
@@ -27,14 +22,14 @@
 
 **注意:** 我个人使用[next.js](https://github.com/zeit/next.js/) 或者 [Razzle](https://github.com/jaredpalmer/razzle) 都支持开箱即用的自定义 Webpack。
 
-## 备选方案
+### 备选方案
 
 您可以尝试使用 [custom -cra](https://github.com/arackaf/customize-cra) 来获得一组 CRA 2.0兼容的 rewirers，或任何旨在支持2.0的替代项目和分支：
 - [Rescripts](https://github.com/rescripts/rescripts)，用于扩展 CRA 配置的替代框架（支持2.0+）
 - [react-scripts-rewired](https://github.com/marcopeg/create-react-app/blob/master/packages/react-scripts/README.md) 为该项目的一个分支，旨在支持 CRA 2.0
 - [craco](https://github.com/sharegate/craco)
 
-# 如何rewire create-react-app项目
+## 如何rewire create-react-app项目
 
 > 使用 [create-react-app](https://github.com/facebookincubator/create-react-app) 创建您的应用，然后 rewire
 
@@ -213,6 +208,7 @@ module.exports = overrides.webpack(config, process.env.NODE_ENV);
 然后在工具配置中指向此文件。
 
 ## 其他问题和选择
+
 ### 1) 入口: 'src/index.js'
 
 此时，由于 create-react-app 包含该文件的方式，很难从默认文件 `src/index.js` 更改入口点。几个 create-react-app 脚本绕过了正常的 rewiring 过程。
@@ -273,9 +269,9 @@ React-app-rewired 会导入您的 config-overrides.js 文件而不使用 “.js�
 如果需要更改 config-overrides.js 的位置，可以将命令行选项 --config-overrides<path> 给 react-app-rewired 脚本。
 
 
-# 版本1.X社区维护 Rewires（检查插件仓库是否支持2.0）
+## 版本1.X社区维护 Rewires（检查插件仓库是否支持2.0）
 
-## Babel 插件
+### Babel 插件
 * [react-app-rewire-emotion](https://github.com/osdevisnot/react-app-rewire-contrib/tree/master/packages/react-app-rewire-emotion) by [@osdevisnot](https://github.com/osdevisnot)
 * [react-app-rewire-lodash](https://github.com/osdevisnot/react-app-rewire-contrib/tree/master/packages/react-app-rewire-lodash) by [@osdevisnot](https://github.com/osdevisnot)
 * [react-app-rewire-styled-components](https://github.com/withspectrum/react-app-rewire-styled-components) by [@mxstbr](https://github.com/mxstbr)
@@ -288,7 +284,7 @@ React-app-rewired 会导入您的 config-overrides.js 文件而不使用 “.js�
 * [react-app-rewire-lingui](https://github.com/Andreyco/react-app-rewire-lingui) by [@andreyco](https://github.com/Andreyco)
 * [react-app-rewire-date-fns](https://github.com/stk-dmitry/react-app-rewire-date-fns) by [@stk-dmitry](https://github.com/stk-dmitry)
 
-## Webpack 插件
+### Webpack 插件
 
 * [react-app-rewire-appcache-plugin](https://github.com/lwd-technology/react-app-rewire-appcache-plugin) by [@jtheis85](https://github.com/jtheis85)
 * [react-app-rewire-build-dev](https://github.com/raodurgesh/react-app-rewire-build-dev) by [@raodurgesh](https://github.com/raodurgesh)
@@ -303,7 +299,7 @@ React-app-rewired 会导入您的 config-overrides.js 文件而不使用 “.js�
 * [react-app-rewire-unplug](https://github.com/sigged/react-app-rewire-unplug) by [@sigged](https://github.com/sigged)
 * [react-app-rewire-compression-plugin](https://github.com/ArVan/react-app-rewire-compression-plugin) by [@ArVan](https://github.com/ArVan)
 
-## Loaders
+### Loaders
 * [react-app-rewire-postcss](https://github.com/csstools/react-app-rewire-postcss)
 * [react-app-rewire-nearley](https://github.com/lwd-technology/react-app-rewire-nearley) by [@jtheis85](https://github.com/jtheis85)
 * [react-app-rewire-coffeescript](https://github.com/stevefan1999/react-app-rewire-coffeescript) by [@stevefan1999](https://github.com/stevefan1999)
@@ -322,7 +318,7 @@ React-app-rewired 会导入您的 config-overrides.js 文件而不使用 “.js�
 * [react-app-rewire-external-svg-loader](https://github.com/moxystudio/react-app-rewire-external-svg-loader) by [@moxystudio](https://github.com/moxystudio)
 * [react-app-rewire-typings-for-css-module](https://github.com/rainx/react-app-rewire-typings-for-css-module) by [@rainx](https://github.com/rainx)
 
-## 其他
+### 其他
 
 * [react-app-rewire-create-react-library](https://github.com/osdevisnot/react-app-rewire-create-react-library) by [@osdevisnot](https://github.com/osdevisnot)
 * [react-app-rewire-react-library](https://github.com/osdevisnot/react-app-rewire-contrib/tree/master/packages/react-app-rewire-react-library) by [@osdevisnot](https://github.com/osdevisnot)
@@ -336,11 +332,11 @@ React-app-rewired 会导入您的 config-overrides.js 文件而不使用 “.js�
 * [ideal-rewires](https://github.com/harrysolovay/ideal-rewires) by [@harrysolovay](https://github.com/harrysolovay)
 * [react-app-rewire-yarn-workspaces](https://github.com/viewstools/yarn-workspaces-cra-crna/tree/master/react-app-rewire-yarn-workspaces) by [@viewstools](https://github.com/viewstools)
 
-# 开发
+## 开发
 
 在开发此项目时，请确保已安装 [yarn](https://yarnpkg.com/en/docs/install) 
 
-## 快速开始
+### 快速开始
 要运行测试应用程序，请进入到该目录并运行：
 
 ```bash
@@ -350,7 +346,7 @@ yarn start
 
 ( 当你结束时，可以通过运行 yarn teardown 清理 )
 
-## 命令
+### 命令
 以下列出了可帮助您进行开发的所有可用命令
 
 - `yarn setup` - installs dependences and links `test/react-app`
@@ -359,7 +355,7 @@ yarn start
 - `yarn test` - tests the react app
 - `yarn teardown` - unlinks `test/react-app` and removes dependencies
 
-# 为什么这个项目存在
+## 为什么这个项目存在
 
 参阅：[Create React App — But I don’t wanna Eject.](https://medium.com/@timarney/but-i-dont-wanna-eject-3e3da5826e39#.x81bb4kji)
 
