@@ -4,6 +4,7 @@ React
    :maxdepth: 2
    :caption: React 相关插件
 
+   react-devtools.md
    redux-devtools.md
 
 .. toctree::
